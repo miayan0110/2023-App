@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> {
                     tv_winner.text = tv_winner.text.toString() + "\n平手"
-                    tv_text.text = "平局，請再試一次！"
+                    tv_text.text = "平局！"
                 }
             }
 
