@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/_46936" />
+
     <EditText
         android:id="@+id/ed_name"
         android:layout_width="wrap_content"
@@ -15,6 +24,8 @@
         android:ems="10"
         android:hint="請輸入玩家姓名"
         android:inputType="textPersonName"
+        android:textColor="#DFFFFFFF"
+        android:textColorHint="#9FFFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />
@@ -27,6 +38,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif"
         android:text="請輸入姓名以開始遊戲"
+        android:textColor="#D3FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/ed_name"
         app:layout_constraintTop_toBottomOf="@+id/ed_name" />
@@ -45,19 +57,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="剪刀" />
+            android:text="剪刀"
+            android:textColor="#D3FFFFFF" />
 
         <RadioButton
             android:id="@+id/btn_stone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="石頭" />
+            android:text="石頭"
+            android:textColor="#D3FFFFFF" />
 
         <RadioButton
             android:id="@+id/btn_paper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="布" />
+            android:text="布"
+            android:textColor="#D3FFFFFF" />
 
     </RadioGroup>
 
@@ -77,6 +92,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="名字"
+        android:textColor="#D3FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/btn_mora"
         app:layout_constraintTop_toBottomOf="@+id/btn_mora" />
 
@@ -86,6 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="勝利者"
+        android:textColor="#D3FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/tv_name"
         app:layout_constraintTop_toTopOf="@+id/tv_name" />
 
@@ -95,6 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="我方出拳"
+        android:textColor="#D3FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/tv_winner"
         app:layout_constraintTop_toTopOf="@+id/tv_winner" />
 
@@ -104,6 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="電腦出拳"
+        android:textColor="#D3FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/tv_mmora"
         app:layout_constraintTop_toTopOf="@+id/tv_mmora" />
 
