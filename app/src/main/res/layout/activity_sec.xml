@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg3" />
+
+    <TextView
+        android:id="@+id/acInfo_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="80dp"
+        android:text="姓名"
+        android:textColor="#292727"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/acInfo_inputName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="請輸入姓名"
+        android:inputType="textPersonName"
+        android:textColor="#292727"
+        app:layout_constraintStart_toStartOf="@+id/acInfo_name"
+        app:layout_constraintTop_toBottomOf="@+id/acInfo_name"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/acInfo_sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="性別"
+        android:textColor="#292727"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/acInfo_inputName"
+        app:layout_constraintTop_toBottomOf="@+id/acInfo_inputName" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/acInfo_sex"
+        app:layout_constraintTop_toBottomOf="@+id/acInfo_sex">
+
+        <RadioButton
+            android:id="@+id/acInfo_btn_male"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="男性"
+            android:textColor="#292727"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/acInfo_btn_female"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="女性"
+            android:textColor="#292727"
+            android:textSize="20sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/acInfo_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="身高(公分)"
+        android:textColor="#292727"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <EditText
+        android:id="@+id/acInfo_inputHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="請輸入身高"
+        android:inputType="number"
+        android:textColor="#292727"
+        app:layout_constraintStart_toStartOf="@+id/acInfo_height"
+        app:layout_constraintTop_toBottomOf="@+id/acInfo_height"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/acInfo_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="體重(公斤)"
+        android:textColor="#292727"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/acInfo_inputHeight"
+        app:layout_constraintTop_toBottomOf="@+id/acInfo_inputHeight" />
+
+    <EditText
+        android:id="@+id/acInfo_inputWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="請輸入體重"
+        android:inputType="number"
+        android:textColor="#292727"
+        app:layout_constraintStart_toStartOf="@+id/acInfo_weight"
+        app:layout_constraintTop_toBottomOf="@+id/acInfo_weight"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/acInfo_btn_return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="48dp"
+        android:text="計算BMI"
+        android:textSize="20sp"
+        app:backgroundTint="#77BAC3"
+        app:layout_constraintStart_toStartOf="@+id/acInfo_inputWeight"
+        app:layout_constraintTop_toBottomOf="@+id/acInfo_inputWeight" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
