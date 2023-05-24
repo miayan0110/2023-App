@@ -1,4 +1,9 @@
 ## 2023-App 
 
-### branch mora
-- a small mora project for class
+### branch final
+- final project for class
+- a simple note app
+
+### features
+- add / delete notes
+- edit notes

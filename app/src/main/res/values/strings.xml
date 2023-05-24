@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ovo</string>
+    <string name="floating_btn">floating button</string>
+
+    <string name="nothing_in_note">這裡什麼都沒有:D</string>
+    <string name="delete_alert">確定要刪除此筆記？o ʌ o</string>
+    <string name="delete_yes">刪掉吧!</string>
+    <string name="delete_no">再想想..</string>
+</resources>
