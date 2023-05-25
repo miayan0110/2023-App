@@ -40,7 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/delete_yes"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            app:backgroundTint="#ffffff" />
 
         <Button
             android:id="@+id/btn_no"
@@ -49,7 +50,8 @@
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:text="@string/delete_no"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            app:backgroundTint="#ffffff"/>
 
     </LinearLayout>
 </RelativeLayout>

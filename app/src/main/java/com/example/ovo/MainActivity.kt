@@ -6,10 +6,7 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Button
-import android.widget.GridView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -42,6 +39,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        /* hide origin action bar */
+        supportActionBar?.hide()
+
+        /* custom action bar actions */
+        //  show menu
+        findViewById<ImageButton>(R.id.btn_menu_main).setOnClickListener {
+            Toast.makeText(this,"menu is clicked!",Toast.LENGTH_SHORT).show()
+        }
 
         /* click floating button to add new note */
         findViewById<FloatingActionButton>(R.id.btn_newNote).setOnClickListener{

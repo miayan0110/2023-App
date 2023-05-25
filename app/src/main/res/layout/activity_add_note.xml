@@ -4,7 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg"
     tools:context=".AddNoteActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/appbar"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:theme="?actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back_add"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/round_ripple"
+            android:src="@drawable/ic_back"
+            app:tint="@color/btn_text"
+            tools:ignore="SpeakableTextPresentCheck">
+
+        </ImageButton>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <EditText
         android:id="@+id/note_title"
@@ -14,13 +42,13 @@
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
         android:paddingTop="20dp"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="標題"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/appbar_add" />
 
     <View
         android:id="@+id/divider"
@@ -40,9 +68,9 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:paddingLeft="20dp"
+        android:paddingLeft="25dp"
         android:paddingTop="20dp"
-        android:paddingRight="20dp"
+        android:paddingRight="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider"
@@ -54,7 +82,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
         android:src="@drawable/ic_check"
-        app:backgroundTint="#757575"
+        app:tint="@color/btn_text"
+        app:backgroundTint="@color/appbar"
+        app:rippleColor="@color/btn_ripple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="SpeakableTextPresentCheck">
