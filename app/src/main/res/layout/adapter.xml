@@ -1,47 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:layout_margin="10dp"
-    android:columnCount="2"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    android:layout_width="185dp"
+    android:layout_height="225dp"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="15dp"
+    android:foreground="?android:attr/selectableItemBackground">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="185dp"
-        android:layout_height="225dp"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="15dp"
-        app:cardBackgroundColor="@color/white">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_height="175dp"
+            android:layout_alignParentTop="true"
+            android:padding="10dp"
+            android:textSize="12sp"
+            android:text="Content" />
 
-            <TextView
-                android:id="@+id/content"
-                android:layout_width="match_parent"
-                android:layout_height="175dp"
-                android:layout_alignParentTop="true"
-                android:padding="10dp"
-                android:textSize="12sp">
-            </TextView>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="8dp"
+            android:textColor="@color/titleColor"
+            android:textSize="18sp"
+            android:text="Title" />
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_alignParentBottom="true"
-                android:padding="0dp"
-                android:textSize="18sp"
-                android:textColor="@color/titleColor">
-            </TextView>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-</GridLayout>
+</androidx.cardview.widget.CardView>

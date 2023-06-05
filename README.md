@@ -7,3 +7,4 @@
 ### features
 - add / delete notes
 - edit notes
+- user instructions
