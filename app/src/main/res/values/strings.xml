@@ -2,6 +2,20 @@
     <string name="app_name">ovo</string>
     <string name="floating_btn">floating button</string>
 
+    <string name="user_name">User Name</string>
+    <string name="user_email">useremail@gmail.com</string>
+    <string name="nav_profile">關於我</string>
+    <string name="nav_login">登入</string>
+    <string name="nav_my_account">我的帳戶</string>
+    <string name="nav_setting">設定</string>
+
+    <string name="hint_user_name">使用者名稱</string>
+    <string name="hint_email">帳號</string>
+    <string name="hint_password">密碼</string>
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
     <string name="nothing_in_note">這裡什麼都沒有:D</string>
     <string name="delete_alert">確定要刪除此筆記？o ʌ o</string>
     <string name="delete_yes">刪掉吧!</string>
@@ -14,4 +28,6 @@
     <string name="info_save_note">📌 儲存筆記內容：點擊筆記編輯畫面右下方 ✔ 或者左上方返回鍵儲存筆記</string>
     <string name="info_fab">📌 查看動作選項：點擊右下方浮動按鈕 ➕ 以查看更多動作</string>
     <string name="info_help">📌 查看使用說明：點擊 ❓ 以查看使用說明</string>
+
+    <string name="no_camera">找不到相機x_x</string>
 </resources>
