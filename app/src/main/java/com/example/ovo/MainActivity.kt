@@ -17,6 +17,7 @@ import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doOnTextChanged
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,16 +44,13 @@ class MainActivity : AppCompatActivity() {
     private var appOpenTimes = 0
     private var isLogin = false
 
-    private var userName = "User Name"
-    private var userEmail = "useremail@gmail.com"
+    private var user = User("User Name", "useremail@gmail.com", 0, "", "")
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         data?.extras?.let {
             val title = "${it.getString("title")}"
             val content = "${it.getString("content")}"
-            userName = "${it.getString("userName")}"
-            userEmail = "${it.getString("userEmail")}"
 
             /* add new note */
             if(requestCode == 1 && (title.isNotEmpty() || content.isNotEmpty())) {
@@ -69,8 +67,17 @@ class MainActivity : AppCompatActivity() {
                 updateScreen()
             }
             else if (requestCode == 3) {
-                findViewById<TextView>(R.id.nav_user_name).text = userName
-                findViewById<TextView>(R.id.nav_user_email).text = userEmail
+                user.name = "${it.getString("userName")}"
+                user.email = "${it.getString("userEmail")}"
+                user.sex = it.getInt("userSex")
+                user.birth = "${it.getString("userBirth")}"
+                user.phone = "${it.getString("userPhone")}"
+                findViewById<TextView>(R.id.nav_user_name).text = user.name
+                findViewById<TextView>(R.id.nav_user_email).text = user.email
+            }
+            else if (requestCode == 4) {
+                val image = data?.extras?.get("data") ?: return
+                findViewById<CircleImageView>(R.id.nav_user_photo).setImageBitmap(image as Bitmap)
             }
         }
     }
@@ -79,6 +86,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /* show instructions if first open */
         appOpenTimes++
         if (appOpenTimes == 1) createDialog(R.layout.help_dialog)
 
@@ -109,40 +117,30 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_my_account -> {
                     /* if not login, login */
                     if (!isLogin) {
-                        val loginD = createDialog(R.layout.login_dialog)
-                        val nameField = loginD.customView.findViewById<TextInputLayout>(R.id.login_edit_name)
-                        val emailField = loginD.customView.findViewById<TextInputLayout>(R.id.login_edit_email)
-                        val passwordField = loginD.customView.findViewById<TextInputLayout>(R.id.login_edit_password)
-                        val loginName = loginD.customView.findViewById<TextInputEditText>(R.id.login_name)
-                        val loginEmail = loginD.customView.findViewById<TextInputEditText>(R.id.login_email)
-                        val loginPassword = loginD.customView.findViewById<TextInputEditText>(R.id.login_password)
-
-                        loginD.customView.findViewById<Button>(R.id.btn_login).setOnClickListener {
-                            if (loginName.text!!.isEmpty()) nameField.error = "還沒有輸入您的大名"
-                            else nameField.error = null
-                            if (loginEmail.text!!.isEmpty()) emailField.error = "還沒有輸入您的email"
-                            else emailField.error = null
-                            if (loginPassword.text!!.length < 8) passwordField.error = "請輸入至少8位數的密碼"
-                            else passwordField.error = null
-
-                            if (loginName.text!!.isNotEmpty() && loginEmail.text!!.isNotEmpty() && loginPassword.text!!.length >= 8) {
-                                userName = loginName.text.toString()
-                                userEmail = loginEmail.text.toString()
-                                loginD.myDialog.dismiss()
-
-                                findViewById<TextView>(R.id.nav_user_name).text = userName
-                                findViewById<TextView>(R.id.nav_user_email).text = userEmail
-                                isLogin = true
-                                Toast.makeText(this@MainActivity, "歡迎回來ovo", Toast.LENGTH_SHORT).show()
-                            }
-                        }
+                        loginApp()
                     }/* else edit account detail */
                     else {
-                        val intentEditAccount = Intent(this, EditAccountActivity::class.java)
+                        val intentEditAccount = Intent(this@MainActivity, EditAccountActivity::class.java)
                         val b = Bundle()
-                        b.putString("userName", userName)
-                        b.putString("userEmail", userEmail)
+                        b.putString("userName", user.name)
+                        b.putString("userEmail", user.email)
+                        b.putInt("userSex", user.sex)
+                        b.putString("userBirth", user.birth)
+                        b.putString("userPhone", user.phone)
                         startActivityForResult(intentEditAccount.putExtras(b), 3)
+                    }
+                }
+                R.id.nav_edit_photo -> {
+                    if (!isLogin) {
+                        loginApp()
+                    }
+                    else {
+                        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                        try {
+                            startActivityForResult(intent, 4)
+                        } catch (e: ActivityNotFoundException) {
+                            Toast.makeText(this@MainActivity, R.string.no_camera, Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
                 R.id.nav_setting -> Toast.makeText(this@MainActivity, "setting", Toast.LENGTH_SHORT).show()
@@ -199,6 +197,40 @@ class MainActivity : AppCompatActivity() {
 
         checkIfNoteIsEmpty()
         updateScreen()
+    }
+
+    private fun loginApp() {
+        val loginD = createDialog(R.layout.login_dialog)
+        val nameField = loginD.customView.findViewById<TextInputLayout>(R.id.login_edit_name)
+        val emailField = loginD.customView.findViewById<TextInputLayout>(R.id.login_edit_email)
+        val passwordField = loginD.customView.findViewById<TextInputLayout>(R.id.login_edit_password)
+        val loginName = loginD.customView.findViewById<TextInputEditText>(R.id.login_name)
+        val loginEmail = loginD.customView.findViewById<TextInputEditText>(R.id.login_email)
+        val loginPassword = loginD.customView.findViewById<TextInputEditText>(R.id.login_password)
+
+        loginName.doOnTextChanged { _, _, _, count -> if (count > 0) nameField.error = null }
+        loginEmail.doOnTextChanged { _, _, _, count -> if (count > 0) emailField.error = null }
+        loginPassword.doOnTextChanged { text, _, _, _ -> if (text != null && text.length > 7) passwordField.error = null }
+
+        loginD.customView.findViewById<Button>(R.id.btn_login).setOnClickListener {
+            if (loginName.text!!.isEmpty()) nameField.error = "還沒有輸入您的大名"
+            else nameField.error = null
+            if (loginEmail.text!!.isEmpty()) emailField.error = "還沒有輸入您的email"
+            else emailField.error = null
+            if (loginPassword.text!!.length < 8) passwordField.error = "請輸入至少8位數的密碼"
+            else passwordField.error = null
+
+            if (loginName.text!!.isNotEmpty() && loginEmail.text!!.isNotEmpty() && loginPassword.text!!.length >= 8) {
+                user.name = loginName.text.toString()
+                user.email = loginEmail.text.toString()
+                loginD.myDialog.dismiss()
+
+                findViewById<TextView>(R.id.nav_user_name).text = user.name
+                findViewById<TextView>(R.id.nav_user_email).text = user.email
+                isLogin = true
+                Toast.makeText(this@MainActivity, "歡迎回來ovo", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -271,4 +303,12 @@ data class Note (
 data class DialogComponents (
     var customView: View,
     var myDialog: AlertDialog
+        )
+
+data class User (
+    var name: String = "User Name",
+    var email: String = "useremail@gmail.com",
+    var sex: Int = 0,
+    var birth: String = "",
+    var phone: String = ""
         )

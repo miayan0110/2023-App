@@ -14,4 +14,6 @@
     <color name="btn_text">#442C2E</color>
     <color name="btn_ripple">#FDB098</color>
     <color name="my_text">#393939</color>
+
+    <color name="counter_overflow">#8BC34A</color>
 </resources>

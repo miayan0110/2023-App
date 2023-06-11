@@ -7,11 +7,21 @@
     <string name="nav_profile">關於我</string>
     <string name="nav_login">登入</string>
     <string name="nav_my_account">我的帳戶</string>
+    <string name="nav_edit_photo">編輯頭像</string>
     <string name="nav_setting">設定</string>
 
     <string name="hint_user_name">使用者名稱</string>
     <string name="hint_email">帳號</string>
     <string name="hint_password">密碼</string>
+    <string name="helper_password">請輸入8位以上的密碼</string>
+
+    <string name="edit_name">姓名</string>
+    <string name="edit_email">信箱</string>
+    <string name="edit_sex">性別</string>
+    <string name="edit_birthday">生日</string>
+    <string name="edit_phone">手機號碼</string>
+    <string name="edit_birth_hint">您的生日在甚麼時候呢(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</string>
+    <string name="edit_phone_hint">可以告訴我您的電話號碼嗎♪(^∇^*)</string>
 
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>

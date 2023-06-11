@@ -8,6 +8,7 @@
         <entry key="..\:/AndroidStudioProjects/ovo/app/src/main/res/drawable/card_ripple_bg.xml" value="0.2355" />
         <entry key="..\:/AndroidStudioProjects/ovo/app/src/main/res/drawable/dialog_bg.xml" value="0.2265" />
         <entry key="..\:/AndroidStudioProjects/ovo/app/src/main/res/drawable/help_dialog_bg.xml" value="0.2355" />
+        <entry key="..\:/AndroidStudioProjects/ovo/app/src/main/res/drawable/ic_account.xml" value="0.2355" />
         <entry key="..\:/AndroidStudioProjects/ovo/app/src/main/res/drawable/ic_add.xml" value="0.2265" />
         <entry key="..\:/AndroidStudioProjects/ovo/app/src/main/res/drawable/ic_edit.xml" value="0.2355" />
         <entry key="..\:/AndroidStudioProjects/ovo/app/src/main/res/drawable/ic_feather.xml" value="0.2355" />
@@ -32,7 +33,7 @@
         <entry key="..\:/AndroidStudioProjects/ovo/app/src/main/res/layout/help_dialog.xml" value="0.72" />
         <entry key="..\:/AndroidStudioProjects/ovo/app/src/main/res/layout/login_dialog.xml" value="0.4" />
         <entry key="..\:/AndroidStudioProjects/ovo/app/src/main/res/layout/nav_header.xml" value="0.4" />
-        <entry key="..\:/AndroidStudioProjects/ovo/app/src/main/res/menu/nav_menu.xml" value="0.2526041666666667" />
+        <entry key="..\:/AndroidStudioProjects/ovo/app/src/main/res/menu/nav_menu.xml" value="0.536" />
       </map>
     </option>
   </component>

@@ -8,25 +8,16 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Toast
+import android.widget.*
+import com.google.android.material.textfield.TextInputEditText
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlin.properties.Delegates
 
 class EditAccountActivity : AppCompatActivity() {
     private lateinit var name: String
     private lateinit var email: String
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        data?.extras?.let {
-            if(requestCode == 11) {
-                val image = data?.extras?.get("data") ?: return
-                findViewById<CircleImageView>(R.id.my_photo).setImageBitmap(image as Bitmap)
-            }
-        }
-    }
+    private lateinit var birth: String
+    private lateinit var phone: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,37 +26,37 @@ class EditAccountActivity : AppCompatActivity() {
         /* hide origin action bar */
         supportActionBar?.hide()
 
-        val editName = findViewById<EditText>(R.id.account_name)
-        val editEmail = findViewById<EditText>(R.id.account_email)
+        val editName = findViewById<TextInputEditText>(R.id.account_name)
+        val editEmail = findViewById<TextInputEditText>(R.id.account_email)
+        val editMale = findViewById<RadioButton>(R.id.account_male)
+        val editFemale = findViewById<RadioButton>(R.id.account_female)
+        val editBirth = findViewById<TextInputEditText>(R.id.account_birthday)
+        val editPhone = findViewById<TextInputEditText>(R.id.account_phone)
 
         /* get origin data of account */
         intent?.extras?.let {
             name = it.getString("userName")!!
             email = it.getString("userEmail")!!
+            birth = it.getString("userBirth")!!
+            phone = it.getString("userPhone")!!
             editName.setText(name)
             editEmail.setText(email)
+            when (it.getInt("userSex")) {
+                0 -> editFemale.isChecked = true
+                else -> editMale.isChecked = true
+            }
+            editBirth.setText(birth)
+            editPhone.setText(phone)
         }
 
         /* custom action bar actions */
         // return to prev page but don't save
         findViewById<ImageButton>(R.id.btn_back_account).setOnClickListener { finish() }
         // save and return to prev page
-        findViewById<Button>(R.id.btn_account_save).setOnClickListener { returnValues(editName, editEmail) }
-
-
-        /* edit user image */
-        findViewById<ImageButton>(R.id.edit_image).setOnClickListener {
-            Toast.makeText(this@EditAccountActivity, "user photo", Toast.LENGTH_SHORT).show()
-            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            try {
-                startActivityForResult(intent, 11)
-            } catch (e: ActivityNotFoundException) {
-                Toast.makeText(this@EditAccountActivity, R.string.no_camera, Toast.LENGTH_SHORT).show()
-            }
-        }
+        findViewById<Button>(R.id.btn_account_save).setOnClickListener { returnValues(editName, editEmail, editMale, editBirth, editPhone) }
     }
 
-    private fun returnValues(userName: EditText, userEmail: EditText) {
+    private fun returnValues(userName: TextInputEditText, userEmail: TextInputEditText, isMale: RadioButton, userBirth: TextInputEditText, userPhone: TextInputEditText) {
         val b = Bundle()
 
         if (userName.length() < 1) b.putString("userName", name)
@@ -73,6 +64,14 @@ class EditAccountActivity : AppCompatActivity() {
 
         if (userEmail.length() < 1) b.putString("userEmail", email)
         else b.putString("userEmail", userEmail.text.toString())
+
+        var sex = when {
+            isMale.isChecked -> 1
+            else -> 0
+        }
+        b.putInt("userSex", sex)
+        b.putString("userBirth", userBirth.text.toString())
+        b.putString("userPhone", userPhone.text.toString())
 
         setResult(Activity.RESULT_OK, Intent().putExtras(b))
         finish()

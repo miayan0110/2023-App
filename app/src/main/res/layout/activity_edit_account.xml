@@ -1,139 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".EditAccountActivity">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar_edit"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/appbar"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:theme="?actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".EditAccountActivity">
 
-        <ImageButton
-            android:id="@+id/btn_back_account"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="8dp"
-            android:background="@drawable/round_ripple"
-            android:src="@drawable/ic_back"
-            app:tint="@color/btn_text"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/appbar"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:theme="?actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        </ImageButton>
+            <ImageButton
+                android:id="@+id/btn_back_account"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/round_ripple"
+                android:src="@drawable/ic_back"
+                app:tint="@color/btn_text"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            </ImageButton>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/my_photo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/senku4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar_edit"
-        tools:ignore="SpeakableTextPresentCheck" />
+        </com.google.android.material.appbar.AppBarLayout>
 
+        <TextView
+            android:id="@+id/tv_my_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/edit_name"
+            android:textColor="@color/my_text"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar_edit" />
 
-    <ImageButton
-        android:id="@+id/edit_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="95dp"
-        android:background="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/my_photo"
-        app:layout_constraintTop_toTopOf="@+id/my_photo"
-        app:srcCompat="@drawable/ic_edit"
-        app:tint="@color/my_text"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/account_field_name"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:errorEnabled="true"
+            app:layout_constraintStart_toStartOf="@+id/tv_my_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_name">
 
-    <TextView
-        android:id="@+id/tv_my_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:text="姓名"
-        android:textColor="@color/my_text"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_photo" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/account_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name"
+                tools:ignore="SpeakableTextPresentCheck" />
 
-    <EditText
-        android:id="@+id/account_name"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:text="User Name"
-        android:textColor="@color/my_text"
-        android:textSize="20sp"
-        android:background="@null"
-        app:layout_constraintStart_toStartOf="@+id/tv_my_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_my_name" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/tv_my_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="信箱"
-        android:textColor="@color/my_text"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/account_name"
-        app:layout_constraintTop_toBottomOf="@+id/account_name" />
+        <TextView
+            android:id="@+id/tv_my_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/edit_email"
+            android:textColor="@color/my_text"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/account_field_name"
+            app:layout_constraintTop_toBottomOf="@+id/account_field_name" />
 
-    <EditText
-        android:id="@+id/account_email"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:text="@string/user_email"
-        android:textColor="@color/my_text"
-        android:textSize="20sp"
-        android:inputType="textEmailAddress"
-        android:background="@null"
-        app:layout_constraintStart_toStartOf="@+id/tv_my_email"
-        app:layout_constraintTop_toBottomOf="@+id/tv_my_email" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/account_field_email"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:errorEnabled="true"
+            app:layout_constraintStart_toStartOf="@+id/tv_my_email"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_email">
 
-    <Button
-        android:id="@+id/btn_account_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="儲存"
-        android:textColor="@color/btn_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/account_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:text="@string/user_email"
+                tools:ignore="SpeakableTextPresentCheck" />
 
-    <!--    <TextView-->
-<!--        android:id="@+id/tv_my_password"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:text="密碼"-->
-<!--        android:textColor="@color/btn_text"-->
-<!--        android:textSize="15sp"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/account_email"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/account_email" />-->
+        </com.google.android.material.textfield.TextInputLayout>
 
-<!--    <EditText-->
-<!--        android:id="@+id/account_password"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="48dp"-->
-<!--        android:background="@null"-->
-<!--        android:text="huhksdjfk"-->
-<!--        android:textColor="@color/btn_text"-->
-<!--        android:textSize="20sp"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/tv_my_password"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tv_my_password" />-->
+        <TextView
+            android:id="@+id/tv_my_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/edit_sex"
+            android:textColor="@color/btn_text"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/account_field_email"
+            app:layout_constraintTop_toBottomOf="@+id/account_field_email" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <RadioGroup
+            android:id="@+id/account_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/tv_my_sex"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_sex">
+
+            <RadioButton
+                android:id="@+id/account_female"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="女性" />
+
+            <RadioButton
+                android:id="@+id/account_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="男性" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_my_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/edit_birthday"
+            android:textColor="@color/btn_text"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/account_sex"
+            app:layout_constraintTop_toBottomOf="@+id/account_sex" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/account_field_birth"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:errorEnabled="true"
+            app:helperText="@string/edit_birth_hint"
+            app:helperTextEnabled="true"
+            app:layout_constraintStart_toStartOf="@+id/tv_my_birthday"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_birthday">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/account_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_my_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/edit_phone"
+            android:textColor="@color/btn_text"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="@+id/account_field_birth"
+            app:layout_constraintTop_toBottomOf="@+id/account_field_birth" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/account_field_phone"
+            style="?attr/textInputOutlinedDenseStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:errorEnabled="true"
+            app:helperText="@string/edit_phone_hint"
+            app:helperTextEnabled="true"
+            app:layout_constraintStart_toStartOf="@+id/tv_my_phone"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_phone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/account_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:maxLength="10"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_account_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="儲存"
+            android:textColor="@color/btn_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/account_field_phone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
