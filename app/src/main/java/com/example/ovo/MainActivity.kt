@@ -143,7 +143,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
-                R.id.nav_setting -> Toast.makeText(this@MainActivity, "setting", Toast.LENGTH_SHORT).show()
+//                R.id.nav_setting -> Toast.makeText(this@MainActivity, "setting", Toast.LENGTH_SHORT).show()
             }
             true
         }
@@ -272,6 +272,7 @@ class MainActivity : AppCompatActivity() {
                 dialog.customView.findViewById<Button>(R.id.btn_yes).setOnClickListener {
                     notes.removeAt(position)
                     gridAdapter.notifyItemRemoved(position)
+                    checkIfNoteIsEmpty()
                     dialog.myDialog.dismiss()
                 }
                 /* cancel note deletion */
