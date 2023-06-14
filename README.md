@@ -1,6 +1,12 @@
-## 2023-App 
+# 2023-App 
 
-### branch final
+## branch mora
+- a small mora project for class
+
+## branch hw3
+- a bmi calculator with informations of bmi
+
+## branch final
 - final project for class
 - a simple note app
 
